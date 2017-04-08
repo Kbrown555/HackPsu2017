@@ -15,6 +15,10 @@ public:
     explicit FrontPanel(QWidget *parent = 0);
     ~FrontPanel();
 
+    void setValue(int value);
+
+
+
 private:
     Ui::FrontPanel *ui;
 };

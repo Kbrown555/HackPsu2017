@@ -1,11 +1,12 @@
-#include "mainwindow.h"
+
+#include "frontpanel.h"
 #include <QApplication>
 
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
+    FrontPanel w;
 
     w.setValue(78);
     w.show();
