@@ -16,6 +16,8 @@ FrontPanel::FrontPanel(QWidget *parent) :
     ui->current_regen->setValue(25);
     ui->current_discharge->setValue(10);
 
+    can= new CanHandler();
+
 
 }
 
@@ -24,12 +26,19 @@ FrontPanel::~FrontPanel()
     delete ui;
 }
 
-void FrontPanel::setValue(int value){
+
+
+void FrontPanel::updateValue(){
     QString basestr="QProgressBar{border: 2px solid grey;border-radius: 3px;text-align: center;background:grey;color:white;}";
     QString allgood="QProgressBar::chunk {background-color: green;border-radius: 5px;}";
-    ui->SOC_prog->setValue(value);
+
+    double newSOC;
+    can->getData(newSOC);
+
+    ui->SOC_prog->setValue(newSOC);
     ui->SOC_prog->setStyleSheet(allgood.append(basestr));
 
-    ui->temp_prog->setValue(value);
-    ui->temp_prog->setFormat(QString::number(value)+QString::fromUtf8("°C"));
+
+    ui->temp_prog->setValue(34);
+    ui->temp_prog->setFormat(QString::number(34)+QString::fromUtf8("°C"));
 }

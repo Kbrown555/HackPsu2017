@@ -8,8 +8,10 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     FrontPanel w;
 
-    w.setValue(78);
     w.show();
+
+    w.updateValue();
+
 
 
 

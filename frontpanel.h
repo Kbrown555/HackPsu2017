@@ -2,6 +2,10 @@
 #define FRONTPANEL_H
 
 #include <QMainWindow>
+#include <fstream>
+#include <iostream>
+#include <unistd.h>
+#include <canhandler.h>
 
 namespace Ui {
 class FrontPanel;
@@ -15,12 +19,13 @@ public:
     explicit FrontPanel(QWidget *parent = 0);
     ~FrontPanel();
 
-    void setValue(int value);
-
+    void updateValue();
 
 
 private:
     Ui::FrontPanel *ui;
+    CanHandler *can;
+
 };
 
 #endif // FRONTPANEL_H

@@ -13,10 +13,17 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    frontpanel.cpp
+    frontpanel.cpp \
+    canhandler.cpp
 
 HEADERS  += \
-    frontpanel.h
+    frontpanel.h \
+    canhandler.h
 
 FORMS    += \
     frontpanel.ui
+
+unix:!macx: LIBS += -L$$PWD/../kvaser/linuxcan/canlib/ -lcanlib
+
+INCLUDEPATH += $$PWD/../kvaser/linuxcan/canlib
+DEPENDPATH += $$PWD/../kvaser/linuxcan/canlib
