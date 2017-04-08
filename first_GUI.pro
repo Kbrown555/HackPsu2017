@@ -27,3 +27,4 @@ unix:!macx: LIBS += -L$$PWD/../kvaser/linuxcan/canlib/ -lcanlib
 
 INCLUDEPATH += $$PWD/../kvaser/linuxcan/canlib
 DEPENDPATH += $$PWD/../kvaser/linuxcan/canlib
+

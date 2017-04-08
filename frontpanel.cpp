@@ -32,7 +32,7 @@ void FrontPanel::updateValue(){
     QString basestr="QProgressBar{border: 2px solid grey;border-radius: 3px;text-align: center;background:grey;color:white;}";
     QString allgood="QProgressBar::chunk {background-color: green;border-radius: 5px;}";
 
-    double newSOC;
+    double newSOC= 97;
     can->getData(newSOC);
 
     ui->SOC_prog->setValue(newSOC);

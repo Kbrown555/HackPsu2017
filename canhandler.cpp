@@ -3,31 +3,35 @@
 CanHandler::CanHandler()
 {
 
-
+    canStatus stat;
     canInitializeLibrary();
     hnd=canOpenChannel(0,canWANT_EXCLUSIVE);
     if(hnd<0){
-        std::cout<<"failed to get can channel";
+        ::exit(22);
     }
 
     canSetBusParams(hnd,canBITRATE_500K,0,0,0,0,0);
     canSetBusOutputControl(hnd,canDRIVER_NORMAL);
-    canBusOn(hnd);
+    stat = canBusOn(hnd);
+    if(stat!= canOK){
+        ::exit(21);
+    }
 }
 
 void CanHandler::getData(double &CurrSOC){
     double SOC;
-    char msgbuffer[25];
+    unsigned char msgbuffer[8];
+    int data[8];
     uint dlc;
+
     canReadSpecificSkip(hnd,1040,&msgbuffer,&dlc,NULL,NULL);
+
     std::stringstream ss;
     std::string s;
-    ss<<msgbuffer[6];
-    ss<<msgbuffer[7];
-    ss<<msgbuffer[8];
-    std::cout<<s;
-    ss>>s;
-    scanf(s.c_str(),"%lA",&SOC);
-    SOC=SOC/2;
+    for(int i=0;i<dlc;i++){
+        data[i]=(int)msgbuffer[i];
+    }
+
+    SOC=data[3]/2;
     CurrSOC=SOC;
 }
