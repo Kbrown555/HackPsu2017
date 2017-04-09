@@ -18,8 +18,8 @@ class CanHandler
 public:
     CanHandler();
 
-    void getData(double &);
-
+    void getData(double &,double &);
+    void getTempData(double &);
 private:
     canHandle hnd;
 

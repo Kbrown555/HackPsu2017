@@ -12,6 +12,8 @@ int main(int argc, char *argv[])
     w.show();
 
 
+    w.startTimer();
+
 
 
     return a.exec();

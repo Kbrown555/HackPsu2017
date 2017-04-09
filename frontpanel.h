@@ -20,11 +20,16 @@ public:
     ~FrontPanel();
 
     void updateValue();
+    void startTimer();
+
+public slots:
+    void updateValueTimed();
 
 
 private:
     Ui::FrontPanel *ui;
     CanHandler *can;
+    QTimer *timer;
 
 };
 
