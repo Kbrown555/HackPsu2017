@@ -24,10 +24,14 @@ public:
 
 public slots:
     void updateValueTimed();
+    void updateShaftOrbs();
+    void updateOrbs();
+
 private:
+    bool regen;
     Ui::MainWindow *ui;
     CanHandler *can;
-    QTimer *timer;
+    QTimer *timer,*timerShaftOrb,*orbDischarge;
 };
 
 #endif // MAINWINDOW_H
