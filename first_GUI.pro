@@ -14,14 +14,14 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
     canhandler.cpp \
-    ecocar.cpp
+    mainwindow.cpp
 
 HEADERS  += \
     canhandler.h \
-    ecocar.h
+    mainwindow.h
 
 FORMS    += \
-    ecocar.ui
+    mainwindow.ui
 
 unix:!macx: LIBS += -L$$PWD/../kvaser/linuxcan/canlib/ -lcanlib
 

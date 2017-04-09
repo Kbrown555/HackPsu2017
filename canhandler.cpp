@@ -58,7 +58,7 @@ void CanHandler::getTempData(double &temp){
         data[i]=(int)msgbuffer[i];
     }
 
-    double temperature=data[4]/2-40;
+    double temperature=data[4]/2.00-40;
     if(temperature!=-40)
         temp=temperature;
 
