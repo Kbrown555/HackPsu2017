@@ -1,36 +1,33 @@
-#ifndef FRONTPANEL_H
-#define FRONTPANEL_H
+#ifndef ECOCAR_H
+#define ECOCAR_H
 
-#include <QMainWindow>
+#include <QTabWidget>
 #include <fstream>
 #include <iostream>
 #include <unistd.h>
 #include <canhandler.h>
 
 namespace Ui {
-class FrontPanel;
+class EcoCAR;
 }
 
-class FrontPanel : public QMainWindow
+class EcoCAR : public QTabWidget
 {
     Q_OBJECT
 
 public:
-    explicit FrontPanel(QWidget *parent = 0);
-    ~FrontPanel();
+    explicit EcoCAR(QWidget *parent = 0);
+    ~EcoCAR();
 
     void updateValue();
     void startTimer();
 
 public slots:
     void updateValueTimed();
-
-
 private:
-    Ui::FrontPanel *ui;
+    Ui::EcoCAR *ui;
     CanHandler *can;
     QTimer *timer;
-
 };
 
-#endif // FRONTPANEL_H
+#endif // ECOCAR_H

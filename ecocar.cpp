@@ -1,9 +1,9 @@
-#include "frontpanel.h"
-#include "ui_frontpanel.h"
+#include "ecocar.h"
+#include "ui_ecocar.h"
 
-FrontPanel::FrontPanel(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::FrontPanel)
+EcoCAR::EcoCAR(QWidget *parent) :
+    QTabWidget(parent),
+    ui(new Ui::EcoCAR)
 {
     ui->setupUi(this);
     ui->temp_prog->setOrientation(Qt::Vertical);
@@ -17,22 +17,20 @@ FrontPanel::FrontPanel(QWidget *parent) :
     ui->current_discharge->setValue(10);
 
     can= new CanHandler();
-
-
 }
 
-FrontPanel::~FrontPanel()
+EcoCAR::~EcoCAR()
 {
     delete ui;
 }
 
-void FrontPanel::startTimer(){
+void EcoCAR::startTimer(){
     timer= new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(updateValueTimed()));
     timer->start(100);
 }
 
-void FrontPanel::updateValue(){
+void EcoCAR::updateValue(){
     QString basestr="QProgressBar{border: 2px solid grey;border-radius: 3px;text-align: center;background:grey;color:white;}";
     QString allgood="QProgressBar::chunk {background-color: green;border-radius: 5px;}";
 
@@ -47,7 +45,7 @@ void FrontPanel::updateValue(){
     ui->temp_prog->setFormat(QString::number(newTemp)+QString::fromUtf8("°C"));
 }
 
-void FrontPanel::updateValueTimed(){
+void EcoCAR::updateValueTimed(){
     QString basestr="QProgressBar{border: 2px solid grey;border-radius: 3px;text-align: center;background:grey;color:white;}";
     QString allgood="QProgressBar::chunk {background-color: green;border-radius: 5px;}";
 
